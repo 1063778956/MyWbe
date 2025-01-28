@@ -164,10 +164,38 @@
             font-size: 2.5rem;
             font-weight: bold;
             background: linear-gradient(45deg, #0066ff, #0099ff);
+            /* 添加渐变文字的兼容性处理 */
+            background-clip: text;
             -webkit-background-clip: text;
+            color: transparent;
             -webkit-text-fill-color: transparent;
             display: block;
             margin-bottom: 10px;
+        }
+
+        /* 降级方案 */
+        @supports not ((background-clip: text) or (-webkit-background-clip: text)) {
+            .stat-number {
+                background: none;
+                color: #0066ff;
+                -webkit-text-fill-color: #0066ff;
+            }
+        }
+
+        /* 针对 Firefox 的特殊处理 */
+        @-moz-document url-prefix() {
+            .stat-number {
+                background: none;
+                color: #0066ff;
+            }
+        }
+
+        /* 针对 IE 的降级处理 */
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+            .stat-number {
+                background: none;
+                color: #0066ff;
+            }
         }
 
         .stat-label {
@@ -181,6 +209,7 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
                 padding: 0 20px;
+                margin-top: 20px;  /* 减小移动端上边距 */
             }
 
             .stat-item {
@@ -188,6 +217,12 @@
                 max-width: 280px;
                 margin: 0 auto;
                 background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            }
+
+            /* 优化动画效果 */
+            .about-stats.visible {
+                margin-top: 15px;  /* 动画完成后的上边距 */
+                transition: margin-top 0.3s ease;  /* 添加过渡效果 */
             }
 
             .stat-number {
@@ -285,6 +320,173 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* 标题容器样式 */
+        .hero-text {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* 标题样式 */
+        .hero h1 {
+            font-size: clamp(24px, 5vw, 48px);  /* 响应式字体大小 */
+            white-space: nowrap;  /* 防止换行 */
+            margin-bottom: 15px;
+        }
+
+        /* 副标题样式 */
+        .hero p {
+            font-size: clamp(16px, 3vw, 24px);  /* 响应式字体大小 */
+            white-space: nowrap;  /* 防止换行 */
+            overflow: hidden;
+            text-overflow: ellipsis;  /* 超出显示省略号 */
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 768px) {
+            /* 整体布局优化 */
+            section {
+                padding: 40px 0;  /* 减小section间距 */
+            }
+
+            section h2 {
+                margin-bottom: 20px;  /* 减小标题下方间距 */
+                font-size: 24px;
+            }
+
+            /* Hero部分优化 */
+            .hero {
+                padding: 40px 20px;  /* 减小内边距 */
+            }
+
+            /* 公司概况部分优化 */
+            .about-content {
+                margin-top: 20px;
+                gap: 15px;  /* 减小内容间距 */
+            }
+
+            .about-text p {
+                margin-bottom: 10px;  /* 减小段落间距 */
+                line-height: 1.6;
+            }
+
+            /* 品牌优势部分优化 */
+            .advantage-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;  /* 减小卡片间距 */
+                padding: 0 20px;
+            }
+
+            .advantage-item {
+                padding: 15px;  /* 减小卡片内边距 */
+                margin-bottom: 10px;
+            }
+
+            /* 产品展示部分优化 */
+            .product-slider {
+                margin: 15px 0;  /* 减小slider外边距 */
+            }
+
+            .slide {
+                height: 180px;  /* 调整幻灯片高度 */
+            }
+
+            /* 体验产品部分优化 */
+            .booking-container {
+                flex-direction: column;
+                padding: 0 15px;
+                gap: 20px;  /* 减小卡片间距 */
+            }
+
+            .booking-card {
+                width: 100%;
+                padding: 15px;  /* 减小卡片内边距 */
+            }
+
+            /* 联系方式部分优化 */
+            .contact-container {
+                margin-top: 15px;
+            }
+
+            .map-wrapper {
+                height: 250px;  /* 调整地图高度 */
+            }
+
+            /* 页脚优化 */
+            .footer {
+                padding: 30px 0 15px;
+            }
+
+            .footer-section {
+                margin-bottom: 20px;
+            }
+
+            .footer-bottom {
+                margin-top: 20px;
+                padding-top: 15px;
+            }
+
+            /* 数据统计部分优化 */
+            .about-stats {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 0 15px;
+                margin-top: 15px;
+            }
+
+            .stat-item {
+                padding: 15px;
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+                margin-bottom: 5px;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* 导航栏样式优化 */
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        /* 导航链接样式优化 */
+        .nav-links a {
+            padding: 5px 15px;  /* 统一内边距 */
+            white-space: nowrap;  /* 防止文字换行 */
+            text-align: center;  /* 文字居中 */
+            display: block;  /* 使内边距生效 */
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px 0;  /* 增加上下内边距 */
+            }
+
+            .nav-links a {
+                width: 100%;  /* 移动端下占满宽度 */
+                padding: 10px 0;  /* 增加可点击区域 */
+                text-align: center;  /* 确保文字居中 */
+                font-size: 16px;  /* 调整字体大小 */
+            }
+
+            /* 特别处理"联系我们" */
+            .nav-links a:last-child {
+                margin: 0 auto;  /* 水平居中 */
+                width: auto;  /* 自适应宽度 */
+                min-width: 100px;  /* 设置最小宽度 */
+                padding: 10px 20px;  /* 左右内边距增加 */
+            }
         }
     </style>
     <!-- 预加载关键资源 -->
@@ -445,8 +647,10 @@
     <main>
         <!-- 首页横幅 -->
         <section id="home" class="hero">
+            <div class="hero-text">
             <h1>非可电竞酒店</h1>
             <p>新一代电竞酒店运营专家 · 全国火热招商中</p>
+            </div>
             <div class="brand-features">
                 <span>轻资产重收益</span>
                 <span class="dot">•</span>
