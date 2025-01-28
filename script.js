@@ -266,8 +266,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // 初始化时确保菜单处于关闭状态
         navLinks.classList.remove('active');
         
+        // 移动端导航菜单点击事件
         menuToggle.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();  // 阻止事件冒泡
             navLinks.classList.toggle('active');
             
             // 切换图标
@@ -276,9 +278,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (navLinks.classList.contains('active')) {
                     icon.classList.remove('bi-list');
                     icon.classList.add('bi-x-lg');
+                    document.body.style.overflow = 'hidden';  // 菜单打开时禁止滚动
                 } else {
                     icon.classList.add('bi-list');
                     icon.classList.remove('bi-x-lg');
+                    document.body.style.overflow = '';  // 菜单关闭时恢复滚动
                 }
             }
         });
@@ -286,13 +290,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // 点击导航链接后关闭菜单
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                if (window.innerWidth <= 992) {
+                if (window.innerWidth <= 768) {  // 修改断点为768px
                     navLinks.classList.remove('active');
                     const icon = menuToggle.querySelector('i');
                     if (icon) {
                         icon.classList.add('bi-list');
                         icon.classList.remove('bi-x-lg');
                     }
+                    document.body.style.overflow = '';  // 恢复滚动
                 }
             });
         });
@@ -306,9 +311,54 @@ document.addEventListener('DOMContentLoaded', function() {
                     icon.classList.add('bi-list');
                     icon.classList.remove('bi-x-lg');
                 }
+                document.body.style.overflow = '';  // 恢复滚动
+            }
+        });
+
+        // 处理移动端滑动关闭菜单
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            touchEndX = e.touches[0].clientX;
+        });
+
+        document.addEventListener('touchend', () => {
+            const swipeDistance = touchEndX - touchStartX;
+            if (swipeDistance > 50 && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    icon.classList.add('bi-list');
+                    icon.classList.remove('bi-x-lg');
+                }
+                document.body.style.overflow = '';
             }
         });
     }
+
+    // 优化移动端滚动性能
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+
+    // 移动端触摸优化
+    document.addEventListener('touchmove', (e) => {
+        if (navLinks.classList.contains('active')) {
+            e.preventDefault();  // 菜单打开时阻止滚动
+        }
+    }, { passive: false });
 
     // 添加滚动监听器来处理元素的显示
     function handleScroll() {
@@ -341,10 +391,112 @@ document.addEventListener('DOMContentLoaded', function() {
     // 添加滚动监听
     window.addEventListener('scroll', handleScroll);
 
-    // 添加立即预订按钮点击事件
-    document.querySelector('.booking-btn').addEventListener('click', function(e) {
-        e.preventDefault();
-        const bookingSection = document.querySelector('#booking');
-        bookingSection.scrollIntoView({ behavior: 'smooth' });
+    // 添加体验产品按钮点击事件（如果存在）
+    const experienceBtn = document.querySelector('.experience-btn');
+    if (experienceBtn) {
+        experienceBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const experienceSection = document.querySelector('#experience');
+            if (experienceSection) {
+                experienceSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // 联系卡片控制
+    const contactElements = {
+        floatingContact: document.querySelector('.floating-contact'),
+        contactInfo: document.querySelector('.contact-info'),
+        phoneElements: document.querySelectorAll('.contact-item:has(.bi-telephone-fill)'),
+        addressElements: document.querySelectorAll('.contact-item:has(.bi-geo-alt-fill)')
+    };
+
+    // 添加触控状态追踪
+    let isTouching = false;
+    let touchTimeout;
+
+    // 优化电话点击处理
+    function handlePhoneClick(phoneNumber, event) {
+        // 如果是触控事件，且没有完全结束触控状态，则不执行
+        if (event.type.startsWith('touch') && isTouching) {
+            return;
+        }
+        
+        if (isMobileDevice()) {
+            window.location.href = `tel:${phoneNumber}`;
+        } else {
+            copyToClipboard(phoneNumber);
+        }
+    }
+
+    // 初始化联系卡片事件
+    if (contactElements.phoneElements.length > 0) {
+        contactElements.phoneElements.forEach(element => {
+            element.style.cursor = 'pointer';
+            
+            // 移除之前的点击事件
+            element.removeEventListener('click', handlePhoneClick);
+            
+            // 添加触控事件处理
+            element.addEventListener('touchstart', (e) => {
+                isTouching = true;
+                // 清除之前的超时
+                if (touchTimeout) {
+                    clearTimeout(touchTimeout);
+                }
+            });
+            
+            element.addEventListener('touchend', (e) => {
+                e.preventDefault(); // 阻止默认行为
+                // 设置一个短暂的延时，确保触控完全结束
+                touchTimeout = setTimeout(() => {
+                    isTouching = false;
+                    handlePhoneClick('18970069331', e);
+                }, 100);
+            });
+            
+            // 保留鼠标点击事件（用于PC端）
+            element.addEventListener('click', (e) => {
+                if (!e.touches) { // 只处理非触控的点击
+                    handlePhoneClick('18970069331', e);
+                }
+            });
+        });
+    }
+
+    // 优化地址点击处理
+    if (contactElements.addressElements.length > 0) {
+        contactElements.addressElements.forEach(element => {
+            element.style.cursor = 'pointer';
+            
+            element.addEventListener('touchstart', (e) => {
+                isTouching = true;
+                if (touchTimeout) {
+                    clearTimeout(touchTimeout);
+                }
+            });
+            
+            element.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                touchTimeout = setTimeout(() => {
+                    isTouching = false;
+                    handleAddressClick();
+                }, 100);
+            });
+            
+            element.addEventListener('click', (e) => {
+                if (!e.touches) {
+                    handleAddressClick();
+                }
+            });
+        });
+    }
+
+    // 添加触控取消处理
+    document.addEventListener('touchcancel', () => {
+        isTouching = false;
+        if (touchTimeout) {
+            clearTimeout(touchTimeout);
+        }
     });
 }); 
