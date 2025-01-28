@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非可电竞酒店加盟_电竞酒店投资_电竞酒店品牌连锁 | 3年回本保障</title>
+    <!-- 添加网站图标 -->
+    <link rel="icon" type="image/png" href="images/非可电竞酒店logo.png">
+    <link rel="apple-touch-icon" href="images/非可电竞酒店logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/非可电竞酒店logo.png">
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <!-- 添加高德地图 JavaScript API -->
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode: '2e6384de6683c581eb40ef77a090fdd1'
+        }
+    </script>
+    <!-- 延迟加载地图API -->
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=360d40b142d6ff6bd97a82393d5a469d&plugin=AMap.ToolBar,AMap.Scale,AMap.HawkEye,AMap.Geolocation" defer></script>
+    <style>
+        .amap-marker-label {
+            border-radius: 20px !important;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 0 !important;
+            background-color: white !important;
+            line-height: 1.2 !important;
+            font-size: 14px !important;
+        }
+        
+        /* 优化页底布局 */
+        .contact-section {
+            padding-bottom: 20px !important;  /* 将底部padding从40px减少到20px */
+            margin-bottom: 0 !important;
+        }
+
+        .footer {
+            background-color: #1a1a1a;  /* 深色背景 */
+            color: #fff;  /* 白色文字 */
+            padding: 30px 0 20px;  /* 同时稍微减少footer的上部padding */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* 优化logo部分的样式 */
+        .footer-section:first-child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+            object-fit: contain;
+        }
+
+        .footer-section h3 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer-section p {
+            margin: 0;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #0066ff, #0099ff);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        /* 优化数据统计布局 */
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            border-radius: 20px;
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #0066ff, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* 响应式布局优化 */
+        @media (max-width: 768px) {
+            .about-stats {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 20px;
+            }
+
+            .stat-item {
+                padding: 20px 15px;
+                max-width: 280px;
+                margin: 0 auto;
+                background: linear-gradient(145deg, #ffffff, #f5f5f5);
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+                margin-bottom: 8px;
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* 添加动画效果 */
+        .stat-item {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 0.2s; }
+        .stat-item:nth-child(2) { animation-delay: 0.4s; }
+        .stat-item:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 添加地图容器样式 */
+        .map-container {
+            position: relative;
+        }
+
+        /* 添加地图遮罩层 */
+        .map-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: transparent;
+            display: none;
+            z-index: 10;
+        }
+
+        /* 鼠标未悬停时禁用地图交互 */
+        #amap-container {
+            pointer-events: none;
+        }
+
+        /* 鼠标悬停时启用地图交互 */
+        .map-container:hover #amap-container {
+            pointer-events: auto;
+        }
+
+        .map-container:hover .map-mask {
+            display: block;
+        }
+
+        /* 优化图片加载 */
+        img {
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        img.lazy {
+            opacity: 0;
+        }
+
+        /* 优化滚动性能 */
+        html {
+            scroll-behavior: auto !important;  /* 禁用平滑滚动，避免加载时的动画 */
+        }
+
+        body {
+            display: none;  /* 初始隐藏页面 */
+        }
+
+        body.ready {
+            display: block;  /* 准备就绪后显示页面 */
+        }
+
+        /* 添加内容渐入效果 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="images/非可电竞酒店logo.png" as="image">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" as="style">
+    <!-- 增强版SEO标签 -->
+    <meta name="description" content="非可电竞酒店专注电竞酒店投资加盟，3年回本保障，轻资产重收益模式。提供电竞酒店改造升级、品牌运营、技术支持等一站式服务。200+成功案例，10万+服务用户，助力传统酒店转型升级，开创酒店新商机。">
+    <meta name="keywords" content="电竞酒店加盟,电竞酒店投资,电竞酒店品牌,电竞酒店改造,酒店转型升级,酒店经营突破,电竞酒店利润,电竞酒店成本">
+    
+    <!-- 结构化数据标记 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "非可电竞酒店",
+      "description": "新一代电竞酒店运营专家，专注电竞酒店投资加盟",
+      "url": "https://您的域名.com",
+      "logo": "https://您的域名.com/images/非可电竞酒店logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+86-18970069331",
+        "contactType": "sales",
+        "areaServed": "CN",
+        "availableLanguage": "Chinese"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "解放东路2222号",
+        "addressLocality": "南昌市",
+        "addressRegion": "江西省",
+        "postalCode": "330000",
+        "addressCountry": "CN"
+      }
+    }
+    </script>
+
+    <!-- 社交媒体标签 -->
+    <meta property="og:title" content="非可电竞酒店加盟 - 3年回本保障的电竞酒店投资新选择">
+    <meta property="og:description" content="200+成功案例，10万+服务用户，轻资产重收益模式，助力传统酒店转型升级。专业团队提供电竞酒店一站式解决方案，开创酒店经营新商机。">
+    <meta property="og:image" content="images/非可电竞酒店logo.png">
+    <meta property="og:url" content="https://您的域名.com">
+    <meta property="og:type" content="website">
+    
+    <!-- 移动端优化 -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- 区域和语言 -->
+    <meta name="geo.region" content="CN-36">
+    <meta name="geo.placename" content="南昌">
+    <link rel="alternate" hreflang="zh-CN" href="https://您的域名.com">
+    <script>
+        // 在页面开始加载时立即执行
+        (function() {
+            // 获取当前滚动位置
+            const scrollPos = sessionStorage.getItem('scrollPos') || window.location.hash;
+            
+            // 如果有保存的位置，立即滚动（在页面加载前）
+            if (scrollPos) {
+                if (scrollPos.startsWith('#')) {
+                    // 如果是锚点链接，等待DOM加载后滚动
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const element = document.querySelector(scrollPos);
+                        if (element) {
+                            element.scrollIntoView();
+                        }
+                    });
+                } else {
+                    // 如果是具体位置，直接滚动
+                    window.scrollTo(0, parseInt(scrollPos));
+                }
+            }
+        })();
+
+        // 优化页面加载和滚动
+        document.addEventListener('DOMContentLoaded', function() {
+            // 显示页面
+            document.body.classList.add('ready');
+            
+            // 懒加载图片
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+            lazyImages.forEach(img => imageObserver.observe(img));
+
+            // 添加内容渐入效果
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            fadeElements.forEach(el => fadeObserver.observe(el));
+        });
+
+        // 保存滚动位置
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.setItem('scrollPos', window.pageYOffset);
+        });
+    </script>
+</head>
+<body class="loading">
+    <!-- 悬浮联系卡片 -->
+    <div class="floating-contact">
+        <div class="contact-info">
+            <div class="contact-header">
+                <img src="./images/非可电竞酒店logo.png" alt="非可电竞酒店" class="contact-logo">
+                <h3>非可电竞酒店</h3>
+            </div>
+            <div class="contact-item phone-item">
+                <i class="bi bi-telephone-fill"></i>
+                <div class="content">
+                    <h3>投资热线</h3>
+                    <p>+86 18970069331</p>
+                </div>
+            </div>
+            <div class="contact-item address-item">
+                <i class="bi bi-geo-alt-fill"></i>
+                <div class="content">
+                    <h3>公司地址</h3>
+                    <p>江西省南昌市青山湖区解放东路2222号</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/非可电竞酒店logo.png" alt="非可电竞酒店logo">
+            <span>非可电竞酒店</span>
+        </div>
+        <button class="menu-toggle" aria-label="菜单">
+            <i class="bi bi-list"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#about">公司概况</a></li>
+            <li><a href="#advantage">品牌优势</a></li>
+            <li><a href="#products">产品展示</a></li>
+            <li><a href="#experience">体验产品</a></li>
+            <li><a href="#contact">公司地址</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main>
+        <!-- 首页横幅 -->
+        <section id="home" class="hero">
+            <h1>非可电竞酒店</h1>
+            <p>新一代电竞酒店运营专家 · 全国火热招商中</p>
+            <div class="brand-features">
+                <span>轻资产重收益</span>
+                <span class="dot">•</span>
+                <span>三年回本保障</span>
+                <span class="dot">•</span>
+                <span>全案运营扶持</span>
+            </div>
+            <div class="hero-buttons">
+                <button class="cta-button join-btn" onclick="handlePhoneClick('18970069331')">
+                    <i class="bi bi-headset"></i> 加盟咨询
+                </button>
+            </div>
+        </section>
+
+        <!-- 公司概况 -->
+        <section id="about" class="about section-fade">
+            <h2>公司概况</h2>
+            <div class="about-content section-fade">
+                <div class="about-text">
+                    <p class="highlight">非可电竞酒店管理团队成立于2021年，于2023年成立非可电竞酒店管理有限公司，是国内领先的电竞主题酒店全链条运营商，专注于以"轻资产+重体验"双轮驱动模式，重塑酒店行业价值。</p>
+                    <div class="about-details">
+                        <p>公司以前瞻性视角切入电竞与住宿融合赛道，通过<strong>存量酒店电竞化改造</strong>与<strong>高端电竞酒店定制开发</strong>两大核心业务，打造集竞技娱乐、社交互动、品质住宿于一体的沉浸式空间。</p>
+                        <p>依托自主研发的"F.R.E.E科学投资模型"与专业电竞动态收益管理系统（RMS），公司实现<strong>100%项目3年内回本</strong>的行业突破，目前已成功改造200+电竞主题客房，服务超10万电竞用户。</p>
+                        <p>未来，非可电竞将持续深化与电竞生态头部资源的战略合作，以数据化运营、场景化创新和低碳化技术为核心竞争力，推动电竞酒店从功能性住宿向泛娱乐消费生态升级，致力成为全球电竞生活方式引领者。</p>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">电竞主题客房</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10万+</span>
+                        <span class="stat-label">服务用户</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">3年回本率</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 品牌优势 -->
+        <section id="advantage" class="advantage section-fade">
+            <h2>品牌优势</h2>
+            <div class="advantage-grid">
+                <div class="advantage-item">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    <h3>三年回本承诺</h3>
+                    <p>依托科学投资模型与精准运营能力，存量改造与高端定制项目均实现3年回本，投资会办率行业领先。</p>
+                </div>
+                <div class="advantage-item">
+                    <i class="bi bi-building-check"></i>
+                    <h3>轻资产合作模式</h3>
+                    <p>存量酒店改造无需合作方承担设备与运营成本，零风险分成模式，最大化盘活闲置资源。</p>
+                </div>
+                <div class="advantage-item">
+                    <i class="bi bi-people-fill"></i>
+                    <h3>电竞流量引擎</h3>
+                    <p>通过私域流量池、精准营销及未来赛事合作规划，构建高粘性高复购用户社群，持续提升入住率。</p>
+                </div>
+                <div class="advantage-item">
+                    <i class="bi bi-gear-wide-connected"></i>
+                    <h3>全产业链能力</h3>
+                    <p>从选址评估、设计改造、设备采购到运营管理，提供一站式解决方案，确保项目高效落地与持续盈利。</p>
+                </div>
+                <div class="advantage-item">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <h3>科学选址模型</h3>
+                    <p>独创"人流密度×消费能力×竞争缺口"三维选址模型，锁定城市核心地段，保障项目先天盈利基因。</p>
+                </div>
+                <div class="advantage-item">
+                    <i class="bi bi-calculator"></i>
+                    <h3>F.R.E.E科学投资模型</h3>
+                    <p>通过流量潜力、回报模型、生态协同、扩展弹性四大模型，精准筛选高回报项目并确保投资安全性。</p>
+                </div>
+                <div class="advantage-item">
+                    <i class="bi bi-rocket-takeoff"></i>
+                    <h3>未来增长潜力</h3>
+                    <p>规划与电竞赛事、游戏厂商深度合作，打造赛事观战、游戏联动等独家场景，持续扩大品牌影响力与用户规模。</p>
+                </div>
+                <div class="advantage-item">
+                    <i class="bi bi-people-fill"></i>
+                    <h3>专业运营团队</h3>
+                    <p>核心团队深耕电竞与酒店行业多年，具备丰富的实战经验与资源整合能力，为项目成功保驾护航。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 产品展示 -->
+        <section id="products" class="products section-fade">
+            <h2>产品展示</h2>
+            <div class="product-slider">
+                <button class="slider-btn prev-btn">&lt;</button>
+                <div class="slider-container">
+                    <div class="slider-track">
+                        <div class="slide">
+                            <img src="./images/products/store-zijingys.jpg" alt="南昌市紫荆夜市店">
+                            <div class="slide-content">
+                                <h3>南昌市紫荆夜市店</h3>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="./images/products/store-longhutianjie.jpg" alt="南昌市龙湖天街店">
+                            <div class="slide-content">
+                                <h3>南昌市龙湖天街店</h3>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="./images/products/store-qshwanda.jpg" alt="南昌市青山湖万达店">
+                            <div class="slide-content">
+                                <h3>南昌市青山湖万达店</h3>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="./images/products/store-hongdudadao.jpg" alt="南昌市洪都大道店">
+                            <div class="slide-content">
+                                <h3>南昌市洪都大道店</h3>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="./images/products/store-bayihuochezhan.jpg" alt="南昌市八一广场火车站店">
+                            <div class="slide-content">
+                                <h3>南昌市八一广场火车站店</h3>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="./images/products/store-xianghuyfy.jpg.jpg" alt="南昌市象湖一附院店">
+                            <div class="slide-content">
+                                <h3>南昌市象湖一附院店</h3>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="./images/products/store-huiren.jpg" alt="南昌市汇仁大道店">
+                            <div class="slide-content">
+                                <h3>南昌市汇仁大道店</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-btn next-btn">&gt;</button>
+                <div class="slider-pagination"></div>
+            </div>
+        </section>
+
+        <!-- 体验产品 -->
+        <section id="experience" class="experience section-fade">
+            <h2>体验产品</h2>
+            <div class="booking-container">
+                <!-- 微信预订卡片 -->
+                <div class="booking-card">
+                    <div class="card-icon">
+                        <i class="bi bi-wechat"></i>
+                    </div>
+                    <h3>微信预订</h3>
+                    <p>扫描下方二维码，关注我们的微信公众号，即可在线预订房间。</p>
+                    <div class="qr-code">
+                        <img src="./images/公众号.png" alt="微信公众号二维码">
+                    </div>
+                </div>
+
+                <!-- 会员特权卡片 -->
+                <div class="booking-card">
+                    <div class="card-icon">
+                        <i class="bi bi-star"></i>
+                    </div>
+                    <h3>会员特权</h3>
+                    <p>成为我们的会员，享受更多专属优惠福利</p>
+                    <div class="benefits-grid">
+                        <div class="benefit-item">
+                            <i class="bi bi-tag-fill"></i>
+                            <span>专属会员折扣</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="bi bi-gift"></i>
+                            <span>生日特别礼遇</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="bi bi-clock"></i>
+                            <span>延迟退房服务</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="bi bi-calendar-event"></i>
+                            <span>会员日优惠</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="bi bi-coin"></i>
+                            <span>会员积分奖励</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="bi bi-ticket-perforated"></i>
+                            <span>优惠房费券</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 公司地址 -->
+        <section id="contact" class="contact-section section-fade">
+            <h2>公司地址</h2>
+            <div class="contact-container">
+                <div class="map-wrapper">
+                    <div class="map-container">
+                        <div class="map-mask"></div>
+                        <div id="amap-container"></div>
+                    </div>
+                    <div class="map-overlay">
+                        <div class="location-info">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <div class="content">
+                                <h3>非可电竞酒店</h3>
+                                <p>江西省南昌市青山湖区解放东路2222号</p>
+                            </div>
+                        </div>
+                        <a href="https://www.amap.com/place/B0IA5UETS2" target="_blank" class="view-map-btn">
+                            <i class="bi bi-box-arrow-up-right"></i>
+                            查看完整地图
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="./images/非可电竞酒店logo.png" alt="非可电竞酒店" class="footer-logo">
+                <h3>非可电竞酒店</h3>
+                <p>新一代电竞酒店运营专家</p>
+            </div>
+            <div class="footer-section">
+                <h4>联系方式</h4>
+                <p><i class="bi bi-telephone-fill"></i> +86 18970069331</p>
+                <p><i class="bi bi-geo-alt-fill"></i> 江西省南昌市青山湖区解放东路2222号</p>
+            </div>
+            <div class="footer-section">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#about">公司概况</a></li>
+                    <li><a href="#advantage">品牌优势</a></li>
+                    <li><a href="#products">产品展示</a></li>
+                    <li><a href="#experience">体验产品</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 非可电竞酒店. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 在body结束标签前添加script -->
+    <script src="script.js"></script>
+    <script>
+        // 检测设备类型
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 复制文本到剪贴板
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('已复制到剪贴板：' + text);
+            }).catch(err => {
+                console.error('复制失败：', err);
+            });
+        }
+
+        // 处理电话号码点击
+        function handlePhoneClick(phoneNumber) {
+            if (isMobileDevice()) {
+                // 移动端 - 拨打电话
+                window.location.href = `tel:${phoneNumber}`;
+            } else {
+                // PC端 - 复制号码
+                copyToClipboard(phoneNumber);
+            }
+        }
+
+        // 处理地址点击
+        function handleAddressClick() {
+            if (isMobileDevice()) {
+                // 移动端 - 打开地图应用
+                window.location.href = 'https://uri.amap.com/marker?position=115.951906,28.656017';
+            } else {
+                // PC端 - 跳转到地图网页
+                window.open('https://www.amap.com/place/B0IA5UETS2', '_blank');
+            }
+        }
+
+        // 页面加载完成后绑定事件
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为联系卡片中的电话和地址添加点击事件
+            const phoneElements = document.querySelectorAll('.contact-item:has(.bi-telephone-fill)');
+            const addressElements = document.querySelectorAll('.contact-item:has(.bi-geo-alt-fill)');
+
+            phoneElements.forEach(element => {
+                element.style.cursor = 'pointer';
+                element.addEventListener('click', () => handlePhoneClick('18970069331'));
+            });
+
+            addressElements.forEach(element => {
+                element.style.cursor = 'pointer';
+                element.addEventListener('click', handleAddressClick);
+            });
+        });
+
+        // 添加地图滚动控制
+        document.addEventListener('DOMContentLoaded', function() {
+            const mapContainer = document.querySelector('.map-container');
+            const mapMask = document.querySelector('.map-mask');
+
+            // 鼠标进入地图区域时
+            mapContainer.addEventListener('mouseenter', function() {
+                document.body.style.overflow = 'hidden'; // 禁止页面滚动
+            });
+
+            // 鼠标离开地图区域时
+            mapContainer.addEventListener('mouseleave', function() {
+                document.body.style.overflow = ''; // 恢复页面滚动
+            });
+
+            // 在遮罩层上监听滚轮事件
+            mapMask.addEventListener('wheel', function(e) {
+                e.preventDefault(); // 阻止滚轮事件传播
+            });
+        });
+    </script>
+</body>
+</html> 
