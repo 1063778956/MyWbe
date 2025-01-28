@@ -323,28 +323,53 @@
         }
 
         /* 标题容器样式 */
-        .hero-text {
-            width: 100%;
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            position: relative;
+            padding: 120px 0;
+            background-size: cover;
+            background-position: center;
+            color: white;
         }
 
-        /* 标题样式 */
+        /* 标题和副标题样式优化 */
         .hero h1 {
-            font-size: clamp(24px, 5vw, 48px);  /* 响应式字体大小 */
-            white-space: nowrap;  /* 防止换行 */
+            font-size: clamp(24px, 5vw, 48px);
             margin-bottom: 15px;
+            text-align: center;
+            width: 100%;
         }
 
-        /* 副标题样式 */
         .hero p {
-            font-size: clamp(16px, 3vw, 24px);  /* 响应式字体大小 */
-            white-space: nowrap;  /* 防止换行 */
-            overflow: hidden;
-            text-overflow: ellipsis;  /* 超出显示省略号 */
+            font-size: clamp(16px, 3vw, 24px);
+            text-align: center;
+            width: 100%;
+            white-space: nowrap;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         /* 移动端优化 */
         @media (max-width: 768px) {
+            .hero {
+                padding: 60px 15px;
+            }
+
+            .hero h1 {
+                font-size: clamp(20px, 6vw, 28px);
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                font-size: clamp(14px, 4vw, 18px);
+                padding: 0 10px;
+            }
+
             /* 整体布局优化 */
             section {
                 padding: 40px 0;  /* 减小section间距 */
