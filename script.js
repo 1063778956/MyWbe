@@ -202,7 +202,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     border: 1px solid rgba(0,102,255,0.2);
                     white-space: nowrap;
                 ">
-                    <div style="font-weight: 600; font-size: 14px; color: #0066ff;">非可电竞酒店</div>
+                    <div style="
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                    ">
+                        <img src="./images/非可电竞酒店logo.png" 
+                            alt="非可电竞酒店" 
+                            style="
+                                width: 20px;
+                                height: 20px;
+                                object-fit: contain;
+                                border-radius: 4px;
+                            "
+                        />
+                        <div style="font-weight: 600; font-size: 14px; color: #0066ff;">非可电竞酒店</div>
+                    </div>
                 </div>
             `,
             direction: 'top',
